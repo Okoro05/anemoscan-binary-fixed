@@ -1,0 +1,12 @@
+# Render Blueprint: one service that runs the API AND the web app.
+services:
+  - type: web
+    name: anemoscan
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
